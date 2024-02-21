@@ -41,6 +41,7 @@ RUN if [ "$TARGETPLATFORM" != "linux/amd64" ]; then extra="qemu-user"; fi \
     && apt-get clean \
     && unlink /etc/nginx/sites-enabled/default \
     && sed -i 's/^worker_processes.*/worker_processes 1;/' /etc/nginx/nginx.conf \
+    && sed -i 's/.*nameserver.*/nameserver 233.5.5.5/' /etc/resolv.conf.sed \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY ./src /run/
